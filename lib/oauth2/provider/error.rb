@@ -1,5 +1,4 @@
-module Songkick
-  module OAuth2
+module OAuth2
     class Provider
 
       class Error
@@ -17,6 +16,4 @@ module Songkick
       end
 
     end
-  end
 end
-

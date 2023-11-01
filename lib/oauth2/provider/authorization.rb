@@ -1,5 +1,4 @@
-module Songkick
-  module OAuth2
+module OAuth2
     class Provider
 
       class Authorization
@@ -106,7 +105,7 @@ module Songkick
         end
 
         def response_body
-          warn "Songkick::OAuth2::Provider::Authorization no longer returns a response body "+
+          warn "OAuth2::Provider::Authorization no longer returns a response body "+
                "when the request is invalid. You should call valid? to determine "+
                "whether to render your login page or an error page."
           nil
@@ -183,6 +182,4 @@ module Songkick
       end
 
     end
-  end
 end
-

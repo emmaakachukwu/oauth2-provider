@@ -11,8 +11,7 @@ begin
 rescue LoadError
 end
 
-module Songkick
-  module OAuth2
+module OAuth2
     ROOT = File.expand_path(File.dirname(__FILE__) + '/..')
     TOKEN_SIZE = 160
 
@@ -131,6 +130,4 @@ module Songkick
       end
     end
 
-  end
 end
-
