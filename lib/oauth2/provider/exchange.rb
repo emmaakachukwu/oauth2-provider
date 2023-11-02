@@ -194,8 +194,8 @@ module OAuth2
       end
 
       def validate_refresh_token
-        refresh_token_hash = OAuth2.hashify(@params[REFRESH_TOKEN])
-        @authorization = @client.authorizations.find_by_refresh_token_hash(refresh_token_hash)
+        refresh_token = OAuth2.hashify(@params[REFRESH_TOKEN])
+        @authorization = @client.authorizations.find_by_refresh_token(refresh_token)
         validate_authorization
       end
 

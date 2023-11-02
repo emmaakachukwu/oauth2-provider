@@ -13,15 +13,15 @@ module OAuth2
       validates_presence_of :client, :owner
 
       validates_uniqueness_of :code,               :scope => :client_id, :allow_nil => true
-      validates_uniqueness_of :refresh_token_hash, :scope => :client_id, :allow_nil => true
-      validates_uniqueness_of :access_token_hash,                        :allow_nil => true
+      validates_uniqueness_of :refresh_token,      :scope => :client_id, :allow_nil => true
+      validates_uniqueness_of :access_token,                             :allow_nil => true
 
       class << self
         private :create, :new
       end
 
       extend Hashing
-      hashes_attributes :access_token, :refresh_token
+      # hashes_attributes :access_token, :refresh_token
 
       def self.create_code(client)
         OAuth2.generate_id do |code|
@@ -32,14 +32,14 @@ module OAuth2
       def self.create_access_token
         OAuth2.generate_id do |token|
           hash = OAuth2.hashify(token)
-          Helpers.count(self, :access_token_hash => hash).zero?
+          Helpers.count(self, :access_token => hash).zero?
         end
       end
 
       def self.create_refresh_token(client)
         OAuth2.generate_id do |refresh_token|
           hash = OAuth2.hashify(refresh_token)
-          Helpers.count(client.authorizations, :refresh_token_hash => hash).zero?
+          Helpers.count(client.authorizations, :refresh_token => hash).zero?
         end
       end
 

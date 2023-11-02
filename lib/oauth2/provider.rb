@@ -35,7 +35,8 @@ module OAuth2
 
     def self.hashify(token)
       return nil unless String === token
-      Digest::SHA1.hexdigest(token)
+      token
+      # Digest::SHA1.hexdigest(token)
     end
 
     ACCESS_TOKEN           = 'access_token'

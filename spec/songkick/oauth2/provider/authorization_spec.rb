@@ -284,8 +284,8 @@ describe OAuth2::Provider::Authorization do
         authorization.owner.should == resource_owner
         authorization.client.should == @client
         authorization.code.should be_nil
-        authorization.access_token_hash.should == OAuth2.hashify("s1")
-        authorization.refresh_token_hash.should == OAuth2.hashify("s2")
+        authorization.access_token.should == OAuth2.hashify("s1")
+        authorization.refresh_token.should == OAuth2.hashify("s2")
       end
     end
 
@@ -307,8 +307,8 @@ describe OAuth2::Provider::Authorization do
         authorization.owner.should == resource_owner
         authorization.client.should == @client
         authorization.code.should == "s1"
-        authorization.access_token_hash.should == OAuth2.hashify("s2")
-        authorization.refresh_token_hash.should == OAuth2.hashify("s3")
+        authorization.access_token.should == OAuth2.hashify("s2")
+        authorization.refresh_token.should == OAuth2.hashify("s3")
       end
     end
   end
