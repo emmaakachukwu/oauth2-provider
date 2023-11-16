@@ -1,6 +1,6 @@
 class Oauth2SchemaOriginalSchema < ActiveRecord::Migration
   def self.up
-    create_table :oauth2_clients do |t|
+    create_table :oauth2_client do |t|
       t.timestamps
       t.string     :oauth2_client_owner_type
       t.integer    :oauth2_client_owner_id
@@ -9,9 +9,9 @@ class Oauth2SchemaOriginalSchema < ActiveRecord::Migration
       t.string     :client_secret_hash
       t.string     :redirect_uri
     end
-    add_index :oauth2_clients, [:client_id]
+    add_index :oauth2_client, [:client_id]
 
-    create_table :oauth2_authorizations do |t|
+    create_table :oauth2_authorization do |t|
       t.timestamps
       t.string     :oauth2_resource_owner_type
       t.integer    :oauth2_resource_owner_id
@@ -22,14 +22,14 @@ class Oauth2SchemaOriginalSchema < ActiveRecord::Migration
       t.string     :refresh_token, :limit => 40
       t.datetime   :expires_at
     end
-    add_index :oauth2_authorizations, [:client_id, :code]
-    add_index :oauth2_authorizations, [:access_token]
-    add_index :oauth2_authorizations, [:client_id, :access_token]
-    add_index :oauth2_authorizations, [:client_id, :refresh_token]
+    add_index :oauth2_authorization, [:client_id, :code]
+    add_index :oauth2_authorization, [:access_token]
+    add_index :oauth2_authorization, [:client_id, :access_token]
+    add_index :oauth2_authorization, [:client_id, :refresh_token]
   end
 
   def self.down
-    drop_table :oauth2_clients
-    drop_table :oauth2_authorizations
+    drop_table :oauth2_client
+    drop_table :oauth2_authorization
   end
 end
