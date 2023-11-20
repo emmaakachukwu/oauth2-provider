@@ -1,4 +1,4 @@
-class Oauth2SchemaAddAuthorizationIndex < ActiveRecord::Migration
+class Oauth2SchemaAddAuthorizationIndex < ActiveRecord::Migration[6.1]
   INDEX_NAME = 'index_owner_client_pairs'
 
   def self.up

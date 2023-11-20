@@ -7,6 +7,8 @@ module OAuth2
                        :class_name => Authorization.name,
                        :as => :oauth2_resource_owner,
                        :dependent => :destroy
+
+        klass.accepts_nested_attributes_for :oauth2_authorizations, allow_destroy: true
       end
 
       def grant_access!(client, options = {})

@@ -1,3 +1,5 @@
+require 'protected_attributes'
+
 module OAuth2
   module Model
 
