@@ -25,7 +25,7 @@ class Oauth2SchemaOriginalSchema < ActiveRecord::Migration
     add_index :oauth2_authorization, [:client_id, :code]
     add_index :oauth2_authorization, [:access_token]
     add_index :oauth2_authorization, [:client_id, :access_token]
-    add_index :oauth2_authorization, [:client_id, :refresh_token]
+    add_index :oauth2_authorization, [:client_id, :refresh_token], name: 'index_client_refresh'
   end
 
   def self.down

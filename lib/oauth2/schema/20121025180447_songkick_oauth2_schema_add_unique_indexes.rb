@@ -1,11 +1,9 @@
 class Oauth2SchemaAddUniqueIndexes < ActiveRecord::Migration
-  FIELDS = [:code, :refresh_token]
-
   def self.up
-    FIELDS.each do |field|
-      remove_index :oauth2_authorization, [:client_id, field]
-      add_index :oauth2_authorization, [:client_id, field], :unique => true
-    end
+    remove_index :oauth2_authorization, column: [:client_id, :code]
+    remove_index :oauth2_authorization, column: [:client_id, :refresh_token], name: 'index_client_refresh'
+    add_index :oauth2_authorization, [:client_id, :code], :unique => true
+    add_index :oauth2_authorization, [:client_id, :refresh_token], name: 'index_client_refresh', :unique => true
     remove_index :oauth2_authorization, [:access_token]
     add_index :oauth2_authorization, [:access_token], :unique => true
 
